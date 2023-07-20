@@ -6,42 +6,42 @@ const pizzaData = [
     name: "Focaccia",
     ingredients: "Bread with italian olive oil and rosemary",
     price: 6,
-    photoName: "pizzas/focaccia.jpg",
+    photoName: "img/focaccia.jpg",
     soldOut: false,
   },
   {
     name: "Pizza Margherita",
     ingredients: "Tomato and mozarella",
     price: 10,
-    photoName: "pizzas/margherita.jpg",
+    photoName: "img/margherita.jpg",
     soldOut: false,
   },
   {
     name: "Pizza Spinaci",
     ingredients: "Tomato, mozarella, spinach, and ricotta cheese",
     price: 12,
-    photoName: "pizzas/spinaci.jpg",
+    photoName: "img/spinaci.jpg",
     soldOut: false,
   },
   {
     name: "Pizza Funghi",
     ingredients: "Tomato, mozarella, mushrooms, and onion",
     price: 12,
-    photoName: "pizzas/funghi.jpg",
+    photoName: "img/funghi.jpg",
     soldOut: false,
   },
   {
     name: "Pizza Salamino",
     ingredients: "Tomato, mozarella, and pepperoni",
     price: 15,
-    photoName: "pizzas/salamino.jpg",
+    photoName: "img/salamino.jpg",
     soldOut: true,
   },
   {
     name: "Pizza Prosciutto",
     ingredients: "Tomato, mozarella, ham, aragula, and burrata cheese",
     price: 18,
-    photoName: "pizzas/prosciutto.jpg",
+    photoName: "img/prosciutto.jpg",
     soldOut: false,
   },
 ];
@@ -49,10 +49,43 @@ const pizzaData = [
 function App() {
   return (
     <div>
-      <h1>Hello React!</h1>
-      <Pizza />
+      <Header />
+      <Menu />
+      <Footer />
     </div>
   );
+}
+
+function Header() {
+  return <h1>Fast React Pizza co.</h1>;
+}
+
+function Menu() {
+  return (
+    <div>
+      <h2>Our Menu</h2>
+      {pizzaData.map((eachPizzaData) => {
+        return (
+          <div>
+            <h1>{eachPizzaData.name}</h1>
+            <p>{eachPizzaData.ingredients}</p>
+            <p>{eachPizzaData.price}</p>
+            <img
+              src={`${eachPizzaData.photoName}`}
+              alt={`${eachPizzaData.photoName}`}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function Footer() {
+  return (
+    <footer>{new Date().toLocaleTimeString()}. We'r currently open!</footer>
+  );
+  // return React.createElement('footer', null, "we'r currently open.")
 }
 
 function Pizza() {
