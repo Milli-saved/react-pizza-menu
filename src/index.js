@@ -80,12 +80,15 @@ function Menu() {
           //     alt={`${eachPizzaData.photoName}`}
           //   />
           // </div>
-          <Pizza
-            name={eachPizzaData.name}
-            ingredients={eachPizzaData.ingredients}
-            pImg={eachPizzaData.photoName}
-            price={eachPizzaData.price}
-          />
+          <ul className="pizzas">
+            <Pizza
+              key={eachPizzaData.name}
+              name={eachPizzaData.name}
+              ingredients={eachPizzaData.ingredients}
+              pImg={eachPizzaData.photoName}
+              price={eachPizzaData.price}
+            />
+          </ul>
         );
       })}
     </menu>
@@ -99,19 +102,24 @@ function Pizza(props) {
       <div>
         <h3>{props.name}</h3>
         <p>{props.ingredients}</p>
-        <span>{ props.price }</span>
+        <span>{props.price}</span>
       </div>
     </div>
   );
 }
 
 function Footer() {
+  const hour = new Date().getHours();
+  const openHour = 8;
+  const closeHour = 16;
+  console.log(hour);
+  const isOpen = hour >= openHour && hour <= closeHour;
+
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()}. We'r currently open!
+      {isOpen ? "We'r currently Open" : "We'r closed at this moment."}
     </footer>
   );
-  // return React.createElement('footer', null, "we'r currently open.")
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
