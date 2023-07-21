@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 const pizzaData = [
   {
@@ -48,7 +49,7 @@ const pizzaData = [
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -57,12 +58,16 @@ function App() {
 }
 
 function Header() {
-  return <h1>Fast React Pizza co.</h1>;
+  return (
+    <header className="header" >
+      <h1>Fast React Pizza co.</h1>
+    </header>
+  );
 }
 
 function Menu() {
   return (
-    <div>
+    <menu className="menu">
       <h2>Our Menu</h2>
       {pizzaData.map((eachPizzaData) => {
         return (
@@ -77,26 +82,26 @@ function Menu() {
           </div>
         );
       })}
-    </div>
+    </menu>
   );
 }
 
 function Footer() {
   return (
-    <footer>{new Date().toLocaleTimeString()}. We'r currently open!</footer>
+    <footer className="footer">{new Date().toLocaleTimeString()}. We'r currently open!</footer>
   );
   // return React.createElement('footer', null, "we'r currently open.")
 }
 
-function Pizza() {
-  return (
-    <div>
-      <img src="img/focaccia.jpg" alt="pizza" />
-      <h2>Pizza</h2>
-      <p>ingr</p>
-    </div>
-  );
-}
+// function Pizza() {
+//   return (
+//     <div>
+//       <img src="img/focaccia.jpg" alt="pizza" />
+//       <h2>Pizza</h2>
+//       <p>ingr</p>
+//     </div>
+//   );
+// }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
